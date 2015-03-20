@@ -711,7 +711,11 @@ class Http extends Router\Generic implements Core\Parameter\Parameterizable {
             if('cli' === php_sapi_name())
                 return $domain = '';
 
-            $domain = $_SERVER['SERVER_NAME'];
+            if(isset($_SERVER['HTTP_HOST']))
+                $domain = $_SERVER['HTTP_HOST'];
+
+            if(empty($domain))
+                $domain = $_SERVER['SERVER_NAME'];
 
             if(empty($domain))
                 $domain = $_SERVER['SERVER_ADDR'];
