@@ -714,10 +714,10 @@ class Http extends Router\Generic implements Core\Parameter\Parameterizable {
             if(isset($_SERVER['HTTP_HOST']))
                 $domain = $_SERVER['HTTP_HOST'];
 
-            if(empty($domain))
+            else if(isset($_SERVER['SERVER_NAME']))
                 $domain = $_SERVER['SERVER_NAME'];
 
-            if(empty($domain))
+            else
                 $domain = $_SERVER['SERVER_ADDR'];
 
             if(0 !== preg_match('#^(.+):' . static::getPort() . '$#', $domain, $m))
