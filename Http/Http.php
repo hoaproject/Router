@@ -713,10 +713,6 @@ class Http extends Router\Generic implements Core\Parameter\Parameterizable {
 
             if(isset($_SERVER['HTTP_HOST']))
                 $domain = $_SERVER['HTTP_HOST'];
-
-            else if(isset($_SERVER['SERVER_NAME']))
-                $domain = $_SERVER['SERVER_NAME'];
-
             else
                 $domain = $_SERVER['SERVER_ADDR'];
 
